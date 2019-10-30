@@ -4,15 +4,27 @@
 })
 
 
-//initialize buttons
-let takeoffButton = null;
 
-// this whole function has to be initialized
+// this whole init function has to be initialized
 //idk why look into that
 
 function init () {
+  //initialize button etc variables
+let takeoffButton = null;
+let landButton = null;
+let abortButton = null;
+let leftButton = null;
+let rightButton = null;
+let upButton = null;
+let downButton = null;
+let rocketPicture = null;
+
+  //Take off button
     //initialize variables as html elements
     takeoffButton = document.getElementById("takeoff");
+
+    //event listener that calls function when button is clicked
+    takeoffButton.addEventListener("click", takeoffConfirm);
     
     //if takeoff button is clicked do these things
     function takeoffConfirm() {
@@ -34,22 +46,59 @@ function init () {
           increment();
       }
 
-      //if land button is clicked do these things
-
-
     }
 
-    //add event listeners for buttons
-    takeoffButton.addEventListener("click", takeoffConfirm);
-
+    //land button 
       //if land button is clicked do these things
-    landButton = document.getElementById("landing");
+     landButton = document.getElementById("landing");
+     landButton.addEventListener("click", landingConfirm);
 
     function landingConfirm(){
-        let confirmLandingVariable = confirm("The shuttle is landing. Landing gear engaged.")
+        let confirmLandingVariable = confirm("The shuttle is landing. Landing gear engaged.");
+        document.getElementById("flightStatus").innerHTML = "The shuttle has landed.";
+        document.getElementById("shuttleBackground").style.background = "green";
+        document.getElementById("spaceShuttleHeight").innerHTML = 0;
     }
+
+    //abortmission button
+    //make js variable to store html button
+    abortButton = document.getElementById("missionAbort");
+    abortButton.addEventListener("click", abortMissionConfirm);
+
+    function abortMissionConfirm(){
+      let confirmAbortVariable = confirm("Confirm that you want to abort the mission.");
+      document.getElementById("flightStatus").innerHTML = "Misson aborted.";
+      document.getElementById("shuttleBackground").style.background = "green";
+      document.getElementById("spaceShuttleHeight").innerHTML = 0;
+    }
+
+    //up down left right movement
+    // assign html elements to js variables so we can do things w them
+    leftButton = document.getElementById("leftb");
+    rightButton = document.getElementById("rightb");
+    upButton = document.getElementById("upb");
+    downButton = document.getElementById("downb");
+    rocketPicture = document.getElementById("rocket");
+
+    //on click event listeners
+    leftButton.addEventListener("click", moveLeft);
+    rightButton.addEventListener("click", moveRight);
+
+
+
+    rocketPicture.style.position = "relative";
+    rocketPicture.style.left = '0px';
+
+    function moveLeft(){
+      rocketPicture.style.left = parseInt(rocketPicture.style.left ) - 10 + 'px';
+      }
+    function moveRight(){
+      rocketPicture.style.left = parseInt(rocketPicture.style.left ) + 10 + 'px';
+    }
+
+
     
-    landButton.addEventListener("click", landingConfirm);
+    
 }
 
 window.onload = init;
