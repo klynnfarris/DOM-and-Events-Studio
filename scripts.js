@@ -83,17 +83,38 @@ let rocketPicture = null;
     //on click event listeners
     leftButton.addEventListener("click", moveLeft);
     rightButton.addEventListener("click", moveRight);
-
+    downButton.addEventListener("click", moveDown);
+    upButton.addEventListener("click", moveUp);
 
 
     rocketPicture.style.position = "relative";
     rocketPicture.style.left = '0px';
+    rocketPicture.style.top = '0px';
 
     function moveLeft(){
       rocketPicture.style.left = parseInt(rocketPicture.style.left ) - 10 + 'px';
       }
     function moveRight(){
       rocketPicture.style.left = parseInt(rocketPicture.style.left ) + 10 + 'px';
+    }
+    
+    let shuttleHeight = 0;
+    function moveDown(){
+      rocketPicture.style.top = parseInt(rocketPicture.style.top) + 10 + 'px';
+      function decrement(){
+        shuttleHeight += -10000;
+      document.getElementById("spaceShuttleHeight").innerHTML = shuttleHeight;
+      }
+      decrement();
+    }
+
+    function moveUp(){
+      rocketPicture.style.top = parseInt(rocketPicture.style.top) - 10 + 'px';
+      function increment(){
+        shuttleHeight += 10000;
+      document.getElementById("spaceShuttleHeight").innerHTML = shuttleHeight;
+      }
+      increment();
     }
 
 
