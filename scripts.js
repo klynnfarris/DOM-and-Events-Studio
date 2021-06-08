@@ -91,9 +91,9 @@ let rocketPicture = null;
     rocketPicture.style.left = '0px';
     rocketPicture.style.top = '0px';
 
-    function moveLeft(){
-      rocketPicture.style.left = parseInt(rocketPicture.style.left ) - 10 + 'px';
-      }
+    // function moveLeft(){
+    //   rocketPicture.style.left = parseInt(rocketPicture.style.left ) - 10 + 'px';
+    //   }
     function moveRight(){
       rocketPicture.style.left = parseInt(rocketPicture.style.left ) + 10 + 'px';
     }
